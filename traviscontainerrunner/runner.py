@@ -43,7 +43,9 @@ def main():
             except KeyError:
                 continue
 
-        with tempfile.NamedTemporaryFile(dir=os.getcwd()) as script_file:
+        with tempfile.NamedTemporaryFile(mode="wt",
+                                         dir=os.getcwd()) as script_file:
+            script_file.write("set -e\n")
             for command in script_commands:
                 script_file.write("{0}\n".format(command))
 
