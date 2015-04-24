@@ -16,6 +16,7 @@ _CONTAINER_ONLY_ERROR = ("travis-container-runner only works with "
                          ""
                          "Add sudo: false to your .travis.yml")
 
+
 def main():
     """Runs the .travis.yml script."""
 
@@ -33,8 +34,10 @@ def main():
         for candidate_section in ["before_install",
                                   "install",
                                   "script",
+                                  "before_cache",
                                   "after_success",
-                                  "after_script"]:
+                                  "after_script",
+                                  "before_deploy"]:
             try:
                 script_commands += travis_yaml[candidate_section]
             except KeyError:
