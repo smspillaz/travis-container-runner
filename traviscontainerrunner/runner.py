@@ -39,7 +39,7 @@ def main():
                                   "after_script",
                                   "before_deploy"]:
             try:
-                script_commands += travis_yaml[candidate_section]
+                script_commands += (travis_yaml[candidate_section] or list())
             except KeyError:
                 continue
 
