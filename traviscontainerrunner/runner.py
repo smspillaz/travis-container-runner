@@ -100,7 +100,7 @@ def main():
                     "script",
                     "before_cache"]
 
-        if len(sys.argv) > 1 and sys.argv[1] == "--run-after-steps":
+        if len(sys.argv) > 1 and "--run-after-steps" in sys.argv:
             sections += ["after_success",
                          "after_script",
                          "before_deploy"]
@@ -124,4 +124,5 @@ def main():
             if result != 0:
                 return result
 
-            record_cache(travis_yaml)
+            if len(sys.argv) > 1 and "--check-cache" in sys.argv:
+                record_cache(travis_yaml)
